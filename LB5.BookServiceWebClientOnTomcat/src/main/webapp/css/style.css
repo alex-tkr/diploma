@@ -1,0 +1,216 @@
+body {
+    font-family: 'Pontano Sans';
+    margin: 0;
+    background-color: #9DBF9E;
+    padding-top: 100px;
+}
+.wrapper,.login-wrapper {
+    font-family: 'Pontano Sans';
+    align-content: center;
+}
+
+.wrapper form ul li input,
+.wrapper form ul li textarea,
+.login-wrapper form ul li input,
+.login-wrapper form ul li textarea{
+    border-radius: 5px;
+    border: 1px solid #eee;
+    padding: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.wrapper form ul li input:focus,
+.login-wrapper form ul li input:focus,
+.wrapper form ul li textarea:focus,
+.login-wrapper form ul li textarea:focus {
+    border: 1px solid #493657;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.wrapper form ul li select,
+.login-wrapper form ul li select {
+    border-radius: 5px;
+    border: 1px solid #eee;
+    padding: 5px 10px;
+    appearance: none;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper form ul li select:focus,
+.login-wrapper form ul li select:focus {
+    border: 1px solid #493657;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.wrapper form ul li select::after,
+.login-wrapper form ul li select::after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-top: 5px solid #493657;
+    margin-left: 5px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.btn-grad {
+    background-image: linear-gradient(90deg, #9181F4 0%, #493657 100%);
+    outline: none;
+    margin-left: 60px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    border-radius: 15px;
+    display: block;
+    color:white;
+    text-decoration: none;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    outline: none;
+    border: 0;
+}
+.btn-small {
+    background-image: linear-gradient(90deg, #9181F4 0%, #493657 100%);
+    margin-left: 60px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    border-radius: 15px;
+    display: block;
+    color:white;
+    text-decoration: none;
+    width: 52px;
+    height: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    outline: none;
+    border: 0;
+}
+
+.vertical-container {
+    background-color: #fff; /* White container */
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+.textarea{
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    padding: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+p {
+    text-align: center;
+}
+
+.headfunc {
+    display: inline-block;
+    padding: 10px 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #333;
+    margin: 0 5px;
+}
+.headfunc1{
+    display: inline-block;
+    padding: 10px 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #333;
+    margin: 0 5px;
+}
+
+.headfunc:hover {
+    background-color: #eee;
+}
+.headfunc1:hover {
+    background-color: #eee;
+}
+
+a[href="list"] {
+    background-image: url(list.png);
+    background-position: left 0px center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+a[href="add.jsp"] {
+    background-image: url(add.png);
+    background-position: left 0px center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+a[href="findtitle.jsp"] {
+    background-image: url(find.png);
+    background-position: left 0px center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+a[href="#"] {
+    background-image: url(money.png);
+    background-position: left 0px center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+
+a[href="list"] {
+    padding-left: 25px;
+}
+
+a[href="add.jsp"] {
+    padding-left: 25px;
+
+}
+
+a[href="findtitle.jsp"] {
+    padding-left: 25px;
+}
+
+a[href="#"] {
+    padding-left: 25px;
+    text-decoration-line: underline;
+}
+
+.content-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+
+}
+.wrapper,
+.login-wrapper{
+    background-color: lightgray;
+    border-radius: 15px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px 30px 20px 30px;
+    margin-bottom: 50px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+.login-wrapper{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+ul{
+    list-style: none;
+}
+

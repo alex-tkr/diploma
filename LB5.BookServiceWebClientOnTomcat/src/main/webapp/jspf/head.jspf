@@ -1,0 +1,14 @@
+<link href="css/style.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Pontano Sans' rel='stylesheet'>
+
+<div class="content-container">
+    <p>
+        <a href="list" class="headfunc">List of events</a> | <a href="add.jsp" class="headfunc">Add new event</a>
+        | <a href="findtitle.jsp" class="headfunc">Find by Title</a>
+        <!--| <a href="#" class="headfunc1">Payments Tab</a>-->
+    </p>
+    <hr />
+
+</div>
+
+
