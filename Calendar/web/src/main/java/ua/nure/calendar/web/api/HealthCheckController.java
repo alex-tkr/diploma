@@ -1,4 +1,4 @@
-package ua.nure.calendar.api;
+package ua.nure.calendar.web.api;
 
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
