@@ -21,7 +21,7 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
 
         try {
             return new UserEntity(
-                    resultSet.getInt("id"),
+                    resultSet.getInt("idUser"),
                     resultSet.getString("firstName"),
                     resultSet.getString("lastName"),
                     resultSet.getString("email"),
@@ -36,7 +36,7 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
     public String entityInsertSql(@Nonnull UserEntity entity) {
         checkNotNull(entity);
 
-        return String.format("INSERT INTO %s (id, firstName, lastName, email, password, idUserRole)" +
+        return String.format("INSERT INTO %s (idUser, firstName, lastName, email, password, idUserRole)" +
                         "VALUES('%d','%s','%s','%s','%s','%d')",
                 table,
                 entity.id(),
@@ -58,7 +58,7 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
                         "email = '%s', " +
                         "password = '%s'" +
                         "idUserRole = '%d'" +
-                        "WHERE id = '%d'",
+                        "WHERE idUser = '%d'",
                 table,
                 entity.firstName(),
                 entity.lastName(),
