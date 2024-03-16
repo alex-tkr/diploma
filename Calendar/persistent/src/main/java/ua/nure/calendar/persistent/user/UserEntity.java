@@ -7,7 +7,7 @@ public class UserEntity extends Entity {
     private final String login;
     private final String password;
 
-    public UserEntity(String id, String login, String password) {
+    public UserEntity(int id, String login, String password) {
         super(id);
         this.login = login;
         this.password = password;

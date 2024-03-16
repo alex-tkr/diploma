@@ -1,13 +1,13 @@
 package ua.nure.calendar.persistent;
 
 public abstract class Entity {
-    private final String id;
+    private final int id;
 
-    public Entity(String id) {
+    public Entity(int id) {
         this.id = id;
     }
 
-    public String id() {
+    public int id() {
         return id;
     }
 }

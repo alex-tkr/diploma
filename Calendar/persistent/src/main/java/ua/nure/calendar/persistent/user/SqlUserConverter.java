@@ -20,7 +20,7 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
         checkNotNull(resultSet);
 
         try {
-            return new UserEntity(resultSet.getString("id"),
+            return new UserEntity(resultSet.getInt("id"),
                     resultSet.getString("login"),
                     resultSet.getString("password"));
         } catch (SQLException e) {
@@ -41,8 +41,8 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
     }
 
     @Override
-    public String entityUpdateSql(@Nonnull UserEntity record) {
-        checkNotNull(record);
+    public String entityUpdateSql(@Nonnull UserEntity entity) {
+        checkNotNull(entity);
 
         return String.format("UPDATE %s " +
                         "SET " +
@@ -50,8 +50,8 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
                         "password = '%s'" +
                         "WHERE id = '%s'",
                 table,
-                record.login(),
-                record.password(),
-                record.id());
+                entity.login(),
+                entity.password(),
+                entity.id());
     }
 }
