@@ -4,20 +4,20 @@ import ua.nure.calendar.persistent.Entity;
 
 public class UserPaymentEntity extends Entity {
 
-    private final int idUser;
-    private final int idPayment;
+    private final String idUser;
+    private final String idPayment;
 
 
-    public UserPaymentEntity(int idUserPayment, int idUser, int idPayment) {
+    public UserPaymentEntity(String idUserPayment, String idUser, String idPayment) {
         super(idUserPayment);
         this.idUser = idUser;
         this.idPayment = idPayment;
     }
 
-    public int idUser(){
+    public String idUser(){
         return idUser;
     }
-    public int idPayment(){
+    public String idPayment(){
         return idPayment;
     }
 }

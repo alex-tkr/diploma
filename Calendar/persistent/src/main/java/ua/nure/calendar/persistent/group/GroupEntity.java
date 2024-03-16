@@ -4,18 +4,18 @@ import ua.nure.calendar.persistent.Entity;
 
 public class GroupEntity extends Entity {
 
-    private final int idTeacher;
+    private final String idTeacher;
     private final int grade;
 
-    public GroupEntity(int idGroup,
-                      int idTeacher,
+    public GroupEntity(String idGroup,
+                       String idTeacher,
                       int grade) {
         super(idGroup);
         this.idTeacher = idTeacher;
         this.grade = grade;
     }
 
-    public int idTeacher() {
+    public String idTeacher() {
         return idTeacher;
     }
 

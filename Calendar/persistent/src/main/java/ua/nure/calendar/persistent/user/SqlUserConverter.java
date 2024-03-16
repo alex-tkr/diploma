@@ -21,7 +21,7 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
 
         try {
             return new UserEntity(
-                    resultSet.getInt("idUser"),
+                    resultSet.getString("idUser"),
                     resultSet.getString("firstName"),
                     resultSet.getString("lastName"),
                     resultSet.getString("email"),
@@ -44,7 +44,7 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
                 entity.lastName(),
                 entity.email(),
                 entity.password(),
-                entity.userRoleId());
+                entity.idUserRole());
     }
 
     @Override
@@ -60,11 +60,11 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
                         "idUserRole = '%d'" +
                         "WHERE idUser = '%d'",
                 table,
+                entity.id(),
                 entity.firstName(),
                 entity.lastName(),
                 entity.email(),
                 entity.password(),
-                entity.userRoleId(),
-                entity.id());
+                entity.idUserRole());
     }
 }

@@ -10,13 +10,13 @@ public class UserEntity extends Entity {
     private final String password;
     private final int idUserRole;
 
-    public UserEntity(int id,
+    public UserEntity(String idUser,
                       String firstName,
                       String lastName,
                       String email,
                       String password,
                       int idUserRole) {
-        super(id);
+        super(idUser);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

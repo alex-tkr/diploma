@@ -2,13 +2,16 @@ package ua.nure.calendar.persistent.event;
 
 import ua.nure.calendar.persistent.Entity;
 
+import java.sql.Date;
+import java.sql.Time;
+
 public class EventEntity extends Entity {
-    private String eventDate;
-    private String name;
-    private String description;
-    private String startTime;
-    private String endTime;
-    public EventEntity(int idEvent) {
+    private final Date eventDate;
+    private final String name;
+    private final String description;
+    private final Time startTime;
+    private final Time endTime;
+    public EventEntity(String idEvent, Date eventDate, String name, String description, Time startTime, Time endTime) {
         super(idEvent);
         this.eventDate = eventDate;
         this.name = name;
@@ -16,7 +19,7 @@ public class EventEntity extends Entity {
         this.startTime = startTime;
         this.endTime = endTime;
     }
-    public String eventDate() {
+    public Date eventDate() {
         return eventDate;
     }
 
@@ -28,11 +31,11 @@ public class EventEntity extends Entity {
         return description;
     }
 
-    public String startTime() {
+    public Time startTime() {
         return startTime;
     }
 
-    public String endTime() {
+    public Time endTime() {
         return endTime;
     }
 }

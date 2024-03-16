@@ -1,4 +1,4 @@
-package ua.nure.calendar.persistent.user;
+package ua.nure.calendar.persistent.group;
 
 import ua.nure.calendar.persistent.DbConnection;
 import ua.nure.calendar.persistent.JdbcDao;
@@ -9,25 +9,21 @@ import java.util.Optional;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-/**
- * A {@link UserDao} implementation to work with authentication via JDBC as {@link JdbcDao}.
- */
-public class JdbcUserDao extends JdbcDao<UserEntity> implements UserDao {
-
-    public JdbcUserDao(DbConnection dbConnection,
+public class JdbcGroupDao extends JdbcDao<GroupEntity> implements GroupDao {
+    public JdbcGroupDao(DbConnection dbConnection,
                        String tableName) {
 
         super(checkNotNull(tableName),
                 checkNotNull(dbConnection),
-                new SqlUserConverter(tableName));
+                new SqlGroupConverter(tableName));
     }
 
     @Override
-    public Optional<UserEntity> findByEmail(String email) {
-        checkNotNull(email);
+    public Optional<GroupEntity> findByGrade(int grade) {
+        checkNotNull(grade);
 
-        String selectSqlQuery = String.format("SELECT * FROM %s WHERE email = '%s'", tableName(),
-                email);
+        String selectSqlQuery = String.format("SELECT * FROM %s WHERE grade = '%s'", tableName(),
+                grade);
 
         try {
             ResultSet resultSet = dbConnection().executeQuery(selectSqlQuery);
