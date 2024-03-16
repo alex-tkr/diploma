@@ -5,7 +5,7 @@ import ua.nure.calendar.persistent.Entity;
 public class UserEntity extends Entity {
 
     private final String firstName;
-    private final String LastName;
+    private final String lastName;
     private final String email;
     private final String password;
     private final int userRoleId;
@@ -18,7 +18,7 @@ public class UserEntity extends Entity {
                       int userRoleId) {
         super(id);
         this.firstName = firstName;
-        LastName = lastName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.userRoleId = userRoleId;
@@ -29,7 +29,7 @@ public class UserEntity extends Entity {
     }
 
     public String lastName() {
-        return LastName;
+        return lastName;
     }
 
     public String email() {
