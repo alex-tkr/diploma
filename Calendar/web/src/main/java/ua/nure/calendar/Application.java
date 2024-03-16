@@ -3,8 +3,10 @@
  */
 package ua.nure.calendar;
 
+import io.micronaut.runtime.Micronaut;
+
 public class Application {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        Micronaut.run(Application.class);
     }
 }
