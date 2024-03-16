@@ -29,6 +29,9 @@ dependencies {
 
     // Use JUnit Jupiter Engine for testing.
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+
+    testImplementation("com.google.guava:guava-testlib:31.1-jre")
+    implementation("com.google.guava:guava:31.1-jre")
 }
 
 tasks.test {
