@@ -8,20 +8,20 @@ public class UserEntity extends Entity {
     private final String LastName;
     private final String email;
     private final String password;
-    private final int userRoleId;
+    private final int idUserRole;
 
     public UserEntity(int id,
                       String firstName,
                       String lastName,
                       String email,
                       String password,
-                      int userRoleId) {
+                      int idUserRole) {
         super(id);
         this.firstName = firstName;
         LastName = lastName;
         this.email = email;
         this.password = password;
-        this.userRoleId = userRoleId;
+        this.idUserRole = idUserRole;
     }
 
     public String firstName() {
@@ -40,7 +40,7 @@ public class UserEntity extends Entity {
         return password;
     }
 
-    public int userRoleId() {
-        return userRoleId;
+    public int idUserRole() {
+        return idUserRole;
     }
 }

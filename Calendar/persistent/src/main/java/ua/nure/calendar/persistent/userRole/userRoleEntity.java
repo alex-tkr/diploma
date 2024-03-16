@@ -1,9 +1,14 @@
-package ua.nure.calendar.persistent;
+package ua.nure.calendar.persistent.userRole;
+
+import ua.nure.calendar.persistent.Entity;
 
 public class userRoleEntity extends Entity {
     String roleName;
     public userRoleEntity(int idUserRole) {
-        super(idEvent);
-        this.roleName;
+        super(idUserRole);
+        this.roleName = roleName;
+    }
+    public String roleName() {
+        return roleName;
     }
 }

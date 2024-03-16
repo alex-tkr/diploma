@@ -1,17 +1,38 @@
-package ua.nure.calendar.persistent;
+package ua.nure.calendar.persistent.event;
+
+import ua.nure.calendar.persistent.Entity;
 
 public class EventEntity extends Entity {
-    String eventDate;
-    String name;
-    String description;
-    String startTime;
-    String endTime;
+    private String eventDate;
+    private String name;
+    private String description;
+    private String startTime;
+    private String endTime;
     public EventEntity(int idEvent) {
         super(idEvent);
-        this.eventDate;
-        this.name;
-        this.description;
-        this.startTime;
-        this.endTime;
+        this.eventDate = eventDate;
+        this.name = name;
+        this.description = description;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+    public String eventDate() {
+        return eventDate;
+    }
+
+    public String name() {
+        return name;
+    }
+
+    public String description() {
+        return description;
+    }
+
+    public String startTime() {
+        return startTime;
+    }
+
+    public String endTime() {
+        return endTime;
     }
 }
