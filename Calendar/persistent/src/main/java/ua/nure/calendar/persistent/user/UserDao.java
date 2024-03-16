@@ -10,10 +10,10 @@ import java.util.Optional;
 public interface UserDao extends DataAccessObject<UserEntity> {
 
     /**
-     * Finds {@link UserEntity} by login.
+     * Finds {@link UserEntity} by email.
      *
-     * @param login The user login.
+     * @param email The user email.
      * @return Optional founded {@link UserEntity}.
      */
-    Optional<UserEntity> findByLogin(String login);
+    Optional<UserEntity> findByEmail(String email);
 }
