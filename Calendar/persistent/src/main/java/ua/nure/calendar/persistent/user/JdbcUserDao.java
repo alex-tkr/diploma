@@ -23,11 +23,11 @@ public class JdbcUserDao extends JdbcDao<UserEntity> implements UserDao {
     }
 
     @Override
-    public Optional<UserEntity> findByLogin(String login) {
-        checkNotNull(login);
+    public Optional<UserEntity> findByEmail(String email) {
+        checkNotNull(email);
 
         String selectSqlQuery = String.format("SELECT * FROM %s WHERE login = '%s'", tableName(),
-                login);
+                email);
 
         try {
             ResultSet resultSet = dbConnection().executeQuery(selectSqlQuery);

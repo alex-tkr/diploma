@@ -20,9 +20,13 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
         checkNotNull(resultSet);
 
         try {
-            return new UserEntity(resultSet.getInt("id"),
-                    resultSet.getString("login"),
-                    resultSet.getString("password"));
+            return new UserEntity(
+                    resultSet.getInt("id"),
+                    resultSet.getString("firstName"),
+                    resultSet.getString("lastName"),
+                    resultSet.getString("email"),
+                    resultSet.getString("password"),
+                    resultSet.getInt("idUserRole"));
         } catch (SQLException e) {
             throw new RuntimeException("Result set reading failed.", e);
         }
@@ -32,12 +36,15 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
     public String entityInsertSql(@Nonnull UserEntity entity) {
         checkNotNull(entity);
 
-        return String.format("INSERT INTO %s (id, login, password)" +
-                        "VALUES('%s','%s','%s')",
+        return String.format("INSERT INTO %s (id, firstName, lastName, email, password, idUserRole)" +
+                        "VALUES('%d','%s','%s','%s','%s','%d')",
                 table,
                 entity.id(),
-                entity.login(),
-                entity.password());
+                entity.firstName(),
+                entity.lastName(),
+                entity.email(),
+                entity.password(),
+                entity.userRoleId());
     }
 
     @Override
@@ -46,12 +53,18 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
 
         return String.format("UPDATE %s " +
                         "SET " +
-                        "login = '%s', " +
+                        "firstName = '%s', " +
+                        "lastName = '%s', " +
+                        "email = '%s', " +
                         "password = '%s'" +
-                        "WHERE id = '%s'",
+                        "idUserRole = '%d'" +
+                        "WHERE id = '%d'",
                 table,
-                entity.login(),
+                entity.firstName(),
+                entity.lastName(),
+                entity.email(),
                 entity.password(),
+                entity.userRoleId(),
                 entity.id());
     }
 }
