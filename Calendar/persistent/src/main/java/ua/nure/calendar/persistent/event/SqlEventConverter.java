@@ -26,7 +26,8 @@ public class SqlEventConverter implements SqlEntityConverter<EventEntity> {
                     resultSet.getString("name"),
                     resultSet.getString("description"),
                     resultSet.getTime("startTime"),
-                    resultSet.getTime("endTime"));
+                    resultSet.getTime("endTime"),
+                    resultSet.getFloat("price"));
         } catch (SQLException e) {
             throw new RuntimeException("Result set reading failed.", e);
         }
@@ -36,15 +37,16 @@ public class SqlEventConverter implements SqlEntityConverter<EventEntity> {
     public String entityInsertSql(@Nonnull EventEntity entity) {
         checkNotNull(entity);
 
-        return String.format("INSERT INTO %s (idEvent, eventDate, name, description, startTime, endTime)" +
-                        "VALUES('%s','%s','%s','%s','%s','%s')",
+        return String.format("INSERT INTO %s (idEvent, eventDate, name, description, startTime, endTime, price)" +
+                        "VALUES('%s','%s','%s','%s','%s','%s','%s')",
                 table,
                 entity.id(),
                 entity.eventDate(),
                 entity.name(),
                 entity.description(),
                 entity.startTime(),
-                entity.endTime());
+                entity.endTime(),
+                entity.price());
     }
 
     @Override
@@ -58,6 +60,7 @@ public class SqlEventConverter implements SqlEntityConverter<EventEntity> {
                         "description = '%s', " +
                         "startTime = '%s'" +
                         "endTime = '%s'" +
+                        "price = '%s'" +
                         "WHERE idEvent = '%s'",
                 table,
                 entity.id(),
@@ -65,6 +68,7 @@ public class SqlEventConverter implements SqlEntityConverter<EventEntity> {
                 entity.name(),
                 entity.description(),
                 entity.startTime(),
-                entity.endTime());
+                entity.endTime(),
+                entity.price());
     }
 }

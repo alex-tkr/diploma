@@ -23,7 +23,8 @@ public class SqlEventUserConverter implements SqlEntityConverter<EventUserEntity
             return new EventUserEntity(
                     resultSet.getString("idEventUser"),
                     resultSet.getString("idUser"),
-                    resultSet.getString("idEvent"));
+                    resultSet.getString("idEvent"),
+                    resultSet.getBoolean("isPaid"));
         } catch (SQLException e) {
             throw new RuntimeException("Result set reading failed.", e);
         }
@@ -33,12 +34,13 @@ public class SqlEventUserConverter implements SqlEntityConverter<EventUserEntity
     public String entityInsertSql(@Nonnull EventUserEntity entity) {
         checkNotNull(entity);
 
-        return String.format("INSERT INTO %s (idEventUser, idUser, idEvent)" +
-                        "VALUES('%s','%s','%s')",
+        return String.format("INSERT INTO %s (idEventUser, idUser, idEvent, isPaid)" +
+                        "VALUES('%s','%s','%s','%s')",
                 table,
                 entity.id(),
                 entity.idUser(),
-                entity.idEvent());
+                entity.idEvent(),
+                entity.isPaid());
     }
 
     @Override
@@ -47,13 +49,14 @@ public class SqlEventUserConverter implements SqlEntityConverter<EventUserEntity
 
         return String.format("UPDATE %s " +
                         "SET " +
-                        "idEventUser = '%s', " +
                         "idUser = '%s', " +
                         "idEvent = '%s', " +
+                        "isPaid = '%s', " +
                         "WHERE idEventUser = '%s'",
                 table,
                 entity.id(),
                 entity.idUser(),
-                entity.idEvent());
+                entity.idEvent(),
+                entity.isPaid());
     }
 }

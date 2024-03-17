@@ -26,7 +26,9 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
                     resultSet.getString("lastName"),
                     resultSet.getString("email"),
                     resultSet.getString("password"),
-                    resultSet.getInt("idUserRole"));
+                    resultSet.getInt("idUserRole"),
+                    resultSet.getBoolean("isAdmin"),
+                    resultSet.getBoolean("isTeacher"));
         } catch (SQLException e) {
             throw new RuntimeException("Result set reading failed.", e);
         }
@@ -36,15 +38,17 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
     public String entityInsertSql(@Nonnull UserEntity entity) {
         checkNotNull(entity);
 
-        return String.format("INSERT INTO %s (idUser, firstName, lastName, email, password, idUserRole)" +
-                        "VALUES('%d','%s','%s','%s','%s','%d')",
+        return String.format("INSERT INTO %s (idUser, firstName, lastName, email, password, idUserRole, isAdmin, isTeacher)" +
+                        "VALUES('%s','%s','%s','%s','%s','%s','%s', '%s')",
                 table,
                 entity.id(),
                 entity.firstName(),
                 entity.lastName(),
                 entity.email(),
                 entity.password(),
-                entity.idUserRole());
+                entity.idUserRole(),
+                entity.isAdmin(),
+                entity.isTeacher());
     }
 
     @Override
@@ -57,14 +61,18 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
                         "lastName = '%s', " +
                         "email = '%s', " +
                         "password = '%s'" +
-                        "idUserRole = '%d'" +
-                        "WHERE idUser = '%d'",
+                        "idUserRole = '%s'" +
+                        "isAdmin = '%s', " +
+                        "isTeacher = '%s', " +
+                        "WHERE idUser = '%s'",
                 table,
                 entity.id(),
                 entity.firstName(),
                 entity.lastName(),
                 entity.email(),
                 entity.password(),
-                entity.idUserRole());
+                entity.idUserRole(),
+                entity.isAdmin(),
+                entity.isTeacher());
     }
 }
