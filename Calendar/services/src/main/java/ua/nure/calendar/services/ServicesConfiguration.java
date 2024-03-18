@@ -1,3 +1,5 @@
+package ua.nure.calendar.services;
+
 import ua.nure.calendar.persistent.DbConnection;
 import ua.nure.calendar.persistent.authentication.AuthenticationDao;
 import ua.nure.calendar.persistent.authentication.JdbcAuthenticationDao;
@@ -15,6 +17,8 @@ import ua.nure.calendar.persistent.user.JdbcUserDao;
 import ua.nure.calendar.persistent.user.UserDao;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.Properties;
 
 public class ServicesConfiguration {
