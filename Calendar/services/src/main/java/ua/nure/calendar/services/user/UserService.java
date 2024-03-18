@@ -51,7 +51,7 @@ public class UserService {
         return newUser.id();
     }
 
-    public AuthenticationEntity auth(String email, String password) throws InvalidCredentials {
+    public UserAuthenticationResponse auth(String email, String password) throws InvalidCredentials {
         var user = userDao.findByEmail(email);
         if (user.isEmpty() || !user.get().password().equals(StringEncryptor.encrypt(password))) {
             throw new InvalidCredentials("User with provided credentials doesn't exist or password do not match.");
@@ -66,7 +66,7 @@ public class UserService {
 
         authDao.create(authentication);
 
-        return authentication;
+        return new UserAuthenticationResponse(authentication.token());
     }
 
     public UserEntity profileById(String userId) throws DataNotFound {

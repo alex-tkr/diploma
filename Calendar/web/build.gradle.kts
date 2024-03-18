@@ -7,7 +7,6 @@ import io.micronaut.gradle.MicronautRuntime
 import io.micronaut.gradle.MicronautTestRuntime
 
 plugins {
-    id("io.micronaut.application")
     id("Calendar.java-application-conventions")
 }
 
@@ -18,19 +17,9 @@ repositories {
 dependencies {
     implementation(project(":services"))
 
-    implementation(Micronaut.Netty.lib)
-    implementation(Micronaut.Runtime.lib)
-    implementation(Micronaut.Management.lib)
-}
+    implementation("com.sparkjava:spark-core:2.9.4")
 
-micronaut {
-    runtime(MicronautRuntime.NETTY)
-    testRuntime(MicronautTestRuntime.JUNIT_5)
-    version.set(Micronaut.version)
-    processing {
-        incremental.set(true)
-        annotations.add("ua.nure.calendar")
-    }
+    implementation("com.google.code.gson:gson:2.10")
 }
 
 application {

@@ -15,10 +15,9 @@ import ua.nure.calendar.persistent.homework.HomeworkDao;
 import ua.nure.calendar.persistent.homework.JdbcHomeworkDao;
 import ua.nure.calendar.persistent.user.JdbcUserDao;
 import ua.nure.calendar.persistent.user.UserDao;
+import ua.nure.calendar.services.user.UserService;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.sql.Time;
 import java.util.Properties;
 
 public class ServicesConfiguration {
@@ -30,6 +29,8 @@ public class ServicesConfiguration {
     private final GroupUserDao groupUserDao;
     private final HomeworkDao homeworkDao;
     private final AuthenticationDao authenticationDao;
+
+    private final UserService userService;
 
 
     public ServicesConfiguration() {
@@ -55,27 +56,11 @@ public class ServicesConfiguration {
         homeworkDao = new JdbcHomeworkDao(dbConnection, "homework");
         authenticationDao = new JdbcAuthenticationDao(dbConnection, "authentication");
 
+        userService = new UserService(userDao, authenticationDao);
+
     }
 
-    public UserDao userDao() {
-        return userDao;
-    }
-    public EventDao eventDao() {
-        return eventDao;
-    }
-    public EventUserDao eventUserDao() {
-        return eventUserDao;
-    }
-    public GroupDao groupDao() {
-        return groupDao;
-    }
-    public GroupUserDao groupUserDao() {
-        return groupUserDao;
-    }
-    public HomeworkDao homeworkDao() {
-        return homeworkDao;
-    }
-    public AuthenticationDao authenticationDao() {
-        return authenticationDao;
+    public UserService userService() {
+        return userService;
     }
 }

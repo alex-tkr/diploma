@@ -3,10 +3,15 @@
  */
 package ua.nure.calendar.web;
 
-import io.micronaut.runtime.Micronaut;
+import ua.nure.calendar.services.ServicesConfiguration;
+import ua.nure.calendar.web.api.user.SignInRoute;
+
+import static spark.Spark.post;
 
 public class Application {
+
     public static void main(String[] args) {
-        Micronaut.run(Application.class);
+        var context = new ServicesConfiguration();
+        post("api/sign-in", new SignInRoute(context.userService()));
     }
 }
