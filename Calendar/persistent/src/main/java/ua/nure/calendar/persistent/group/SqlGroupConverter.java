@@ -34,7 +34,7 @@ public class SqlGroupConverter implements SqlEntityConverter<GroupEntity> {
         checkNotNull(entity);
 
         return String.format("INSERT INTO %s (idGroup, idTeacher, grade)" +
-                        "VALUES('%s','%s','%s')",
+                        "VALUES('%s','%s','%d')",
                 table,
                 entity.id(),
                 entity.idTeacher(),
@@ -48,11 +48,11 @@ public class SqlGroupConverter implements SqlEntityConverter<GroupEntity> {
         return String.format("UPDATE %s " +
                         "SET " +
                         "idTeacher = '%s', " +
-                        "grade = '%s', " +
+                        "grade = '%d', " +
                         "WHERE idGroup = '%s'",
                 table,
-                entity.id(),
                 entity.idTeacher(),
-                entity.grade());
+                entity.grade(),
+                entity.id());
     }
 }

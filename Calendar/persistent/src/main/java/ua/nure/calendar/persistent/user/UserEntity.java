@@ -8,7 +8,6 @@ public class UserEntity extends Entity {
     private final String lastName;
     private final String email;
     private final String password;
-    private final int idUserRole;
     private final boolean isAdmin;
     private final boolean isTeacher;
 
@@ -17,13 +16,13 @@ public class UserEntity extends Entity {
                       String lastName,
                       String email,
                       String password,
-                      int idUserRole, boolean isAdmin, boolean isTeacher) {
+                      boolean isAdmin,
+                      boolean isTeacher) {
         super(idUser);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.idUserRole = idUserRole;
         this.isAdmin = isAdmin;
         this.isTeacher = isTeacher;
     }
@@ -44,12 +43,10 @@ public class UserEntity extends Entity {
         return password;
     }
 
-    public int idUserRole() {
-        return idUserRole;
-    }
     public boolean isAdmin() {
         return isAdmin;
     }
+
     public boolean isTeacher() {
         return isTeacher;
     }

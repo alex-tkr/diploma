@@ -17,23 +17,4 @@ public class JdbcEventDao extends JdbcDao<EventEntity> implements EventDao {
                 checkNotNull(dbConnection),
                 new SqlEventConverter(tableName));
     }
-
-    @Override
-    public Optional<EventEntity> findByName(String name) {
-        checkNotNull(name);
-
-        String selectSqlQuery = String.format("SELECT * FROM %s WHERE name = '%s'", tableName(),
-                name);
-
-        try {
-            ResultSet resultSet = dbConnection().executeQuery(selectSqlQuery);
-
-            if (resultSet.next()) {
-                return Optional.of(sqlEntityConverter().resultSetToEntity(resultSet));
-            }
-            return Optional.empty();
-        } catch (SQLException e) {
-            throw new RuntimeException("Database query failed.", e);
-        }
-    }
 }

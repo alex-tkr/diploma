@@ -21,6 +21,7 @@ public class HomeworkEntity extends Entity {
     public int mark() {
         return mark;
     }
+
     public String description() {
         return description;
     }

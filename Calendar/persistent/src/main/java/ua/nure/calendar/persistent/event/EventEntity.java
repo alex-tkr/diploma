@@ -11,8 +11,9 @@ public class EventEntity extends Entity {
     private final String description;
     private final Time startTime;
     private final Time endTime;
-    private final float price;
-    public EventEntity(String idEvent, Date eventDate, String name, String description, Time startTime, Time endTime, float price) {
+    private final double price;
+
+    public EventEntity(String idEvent, Date eventDate, String name, String description, Time startTime, Time endTime, double price) {
         super(idEvent);
         this.eventDate = eventDate;
         this.name = name;
@@ -21,6 +22,7 @@ public class EventEntity extends Entity {
         this.endTime = endTime;
         this.price = price;
     }
+
     public Date eventDate() {
         return eventDate;
     }
@@ -40,7 +42,8 @@ public class EventEntity extends Entity {
     public Time endTime() {
         return endTime;
     }
-    public float price() {
+
+    public double price() {
         return price;
     }
 }

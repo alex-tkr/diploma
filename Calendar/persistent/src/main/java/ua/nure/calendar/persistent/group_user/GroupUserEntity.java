@@ -6,6 +6,7 @@ public class GroupUserEntity extends Entity {
 
     private final String idGroup;
     private final String idUser;
+
     public GroupUserEntity(String idGroupUser, String idGroup, String idUser) {
         super(idGroupUser);
         this.idGroup = idGroup;
@@ -15,6 +16,7 @@ public class GroupUserEntity extends Entity {
     public String idGroup() {
         return idGroup;
     }
+
     public String idUser() {
         return idUser;
     }

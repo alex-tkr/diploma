@@ -14,6 +14,7 @@ public class EventUserEntity extends Entity {
         this.idEvent = idEvent;
         this.isPaid = isPaid;
     }
+
     public String idUser() {
         return idUser;
     }

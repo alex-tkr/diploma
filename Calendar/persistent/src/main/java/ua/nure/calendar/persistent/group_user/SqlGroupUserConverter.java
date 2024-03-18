@@ -51,8 +51,8 @@ public class SqlGroupUserConverter implements SqlEntityConverter<GroupUserEntity
                         "idGroup = '%s', " +
                         "WHERE idGroupUser = '%s'",
                 table,
-                entity.id(),
                 entity.idUser(),
-                entity.idGroup());
+                entity.idGroup(),
+                entity.id());
     }
 }

@@ -8,12 +8,14 @@ public class AuthenticationEntity extends Entity {
     private final String idUser;
     private final String token;
     private final Date expirationDate;
+
     public AuthenticationEntity(String idAuthentication, String idUser, String token, Date expirationDate) {
         super(idAuthentication);
         this.idUser = idUser;
         this.token = token;
         this.expirationDate = expirationDate;
     }
+
     public String idUser() {
         return idUser;
     }

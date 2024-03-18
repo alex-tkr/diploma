@@ -27,7 +27,7 @@ public class SqlEventConverter implements SqlEntityConverter<EventEntity> {
                     resultSet.getString("description"),
                     resultSet.getTime("startTime"),
                     resultSet.getTime("endTime"),
-                    resultSet.getFloat("price"));
+                    resultSet.getDouble("price"));
         } catch (SQLException e) {
             throw new RuntimeException("Result set reading failed.", e);
         }
@@ -60,15 +60,15 @@ public class SqlEventConverter implements SqlEntityConverter<EventEntity> {
                         "description = '%s', " +
                         "startTime = '%s'" +
                         "endTime = '%s'" +
-                        "price = '%s'" +
+                        "price = '%d'" +
                         "WHERE idEvent = '%s'",
                 table,
-                entity.id(),
                 entity.eventDate(),
                 entity.name(),
                 entity.description(),
                 entity.startTime(),
                 entity.endTime(),
-                entity.price());
+                entity.price(),
+                entity.id());
     }
 }

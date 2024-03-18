@@ -26,7 +26,6 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
                     resultSet.getString("lastName"),
                     resultSet.getString("email"),
                     resultSet.getString("password"),
-                    resultSet.getInt("idUserRole"),
                     resultSet.getBoolean("isAdmin"),
                     resultSet.getBoolean("isTeacher"));
         } catch (SQLException e) {
@@ -38,15 +37,14 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
     public String entityInsertSql(@Nonnull UserEntity entity) {
         checkNotNull(entity);
 
-        return String.format("INSERT INTO %s (idUser, firstName, lastName, email, password, idUserRole, isAdmin, isTeacher)" +
-                        "VALUES('%s','%s','%s','%s','%s','%s','%s', '%s')",
+        return String.format("INSERT INTO %s (idUser, firstName, lastName, email, password, isAdmin, isTeacher)" +
+                        "VALUES('%s','%s','%s','%s','%s','%b','%b')",
                 table,
                 entity.id(),
                 entity.firstName(),
                 entity.lastName(),
                 entity.email(),
                 entity.password(),
-                entity.idUserRole(),
                 entity.isAdmin(),
                 entity.isTeacher());
     }
@@ -62,17 +60,16 @@ class SqlUserConverter implements SqlEntityConverter<UserEntity> {
                         "email = '%s', " +
                         "password = '%s'" +
                         "idUserRole = '%s'" +
-                        "isAdmin = '%s', " +
-                        "isTeacher = '%s', " +
+                        "isAdmin = '%b', " +
+                        "isTeacher = '%b', " +
                         "WHERE idUser = '%s'",
                 table,
-                entity.id(),
                 entity.firstName(),
                 entity.lastName(),
                 entity.email(),
                 entity.password(),
-                entity.idUserRole(),
                 entity.isAdmin(),
-                entity.isTeacher());
+                entity.isTeacher(),
+                entity.id());
     }
 }

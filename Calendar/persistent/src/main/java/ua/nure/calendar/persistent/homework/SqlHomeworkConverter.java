@@ -35,7 +35,7 @@ public class SqlHomeworkConverter implements SqlEntityConverter<HomeworkEntity> 
         checkNotNull(entity);
 
         return String.format("INSERT INTO %s (idHomework, idUser, mark, description)" +
-                        "VALUES('%s','%s','%s','%s')",
+                        "VALUES('%s','%s','%d','%s')",
                 table,
                 entity.id(),
                 entity.idUser(),
@@ -50,13 +50,13 @@ public class SqlHomeworkConverter implements SqlEntityConverter<HomeworkEntity> 
         return String.format("UPDATE %s " +
                         "SET " +
                         "idUser = '%s', " +
-                        "mark = '%s', " +
+                        "mark = '%d', " +
                         "description = '%s', " +
                         "WHERE idHomework = '%s'",
                 table,
-                entity.id(),
                 entity.idUser(),
                 entity.mark(),
-                entity.description());
+                entity.description(),
+                entity.id());
     }
 }

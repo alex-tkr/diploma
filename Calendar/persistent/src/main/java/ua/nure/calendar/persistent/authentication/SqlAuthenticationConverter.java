@@ -53,9 +53,9 @@ public class SqlAuthenticationConverter implements SqlEntityConverter<Authentica
                         "expirationDate = '%s', " +
                         "WHERE idAuthentication = '%s'",
                 table,
-                entity.id(),
                 entity.idUser(),
                 entity.token(),
-                entity.expirationDate());
+                entity.expirationDate(),
+                entity.id());
     }
 }

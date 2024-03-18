@@ -35,7 +35,7 @@ public class SqlEventUserConverter implements SqlEntityConverter<EventUserEntity
         checkNotNull(entity);
 
         return String.format("INSERT INTO %s (idEventUser, idUser, idEvent, isPaid)" +
-                        "VALUES('%s','%s','%s','%s')",
+                        "VALUES('%s','%s','%s','%b')",
                 table,
                 entity.id(),
                 entity.idUser(),
@@ -51,12 +51,12 @@ public class SqlEventUserConverter implements SqlEntityConverter<EventUserEntity
                         "SET " +
                         "idUser = '%s', " +
                         "idEvent = '%s', " +
-                        "isPaid = '%s', " +
+                        "isPaid = '%b', " +
                         "WHERE idEventUser = '%s'",
                 table,
-                entity.id(),
                 entity.idUser(),
                 entity.idEvent(),
-                entity.isPaid());
+                entity.isPaid(),
+                entity.id());
     }
 }
