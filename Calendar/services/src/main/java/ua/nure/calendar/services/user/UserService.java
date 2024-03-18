@@ -69,9 +69,17 @@ public class UserService {
         return new UserAuthenticationResponse(authentication.token());
     }
 
+    public String verifyToken(String token) throws InvalidCredentials {
+        var auth = authDao.findByToken(token);
+        if (auth.isEmpty() || auth.get().expirationDate().toLocalDate().isBefore(LocalDate.now())) {
+            throw new InvalidCredentials("Authentication token is not valid.");
+        }
+        return auth.get().idUser();
+    }
+
     public UserEntity profileById(String userId) throws DataNotFound {
         var user = userDao.findById(userId);
-        if(user.isEmpty()) {
+        if (user.isEmpty()) {
             throw new DataNotFound("User with provided ID doesn't exist");
         }
 
