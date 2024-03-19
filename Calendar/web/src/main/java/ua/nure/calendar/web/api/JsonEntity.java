@@ -2,6 +2,12 @@ package ua.nure.calendar.web.api;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.function.Function;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -30,6 +36,30 @@ public class JsonEntity {
     public String getAsString(String fieldName) throws JsonEntityValidationException {
         checkNotNull(fieldName);
         return get(fieldName, JsonElement::getAsString);
+    }
+
+    public Boolean getAsBoolean(String fieldName) throws JsonEntityValidationException {
+        checkNotNull(fieldName);
+        return get(fieldName, JsonElement::getAsBoolean);
+    }
+    public Date getAsDate(String fieldName) throws JsonEntityValidationException {
+        checkNotNull(fieldName);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");
+        formatter = formatter.withLocale(Locale.ENGLISH);
+        LocalDate date = LocalDate.parse(get(fieldName, JsonElement::getAsString), formatter);
+        return Date.valueOf(date);
+    }
+    public Time getAsTime(String fieldName) throws JsonEntityValidationException {
+        checkNotNull(fieldName);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        formatter = formatter.withLocale(Locale.ENGLISH);
+        LocalDate time = LocalDate.parse(get(fieldName, JsonElement::getAsString), formatter);
+        return Time.valueOf(String.valueOf(time));
+    }
+
+    public double getAsDouble(String fieldName) throws JsonEntityValidationException {
+        checkNotNull(fieldName);
+        return get(fieldName, JsonElement::getAsDouble);
     }
 
     /**

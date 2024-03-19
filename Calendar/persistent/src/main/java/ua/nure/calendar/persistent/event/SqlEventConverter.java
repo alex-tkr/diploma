@@ -27,7 +27,8 @@ public class SqlEventConverter implements SqlEntityConverter<EventEntity> {
                     resultSet.getString("description"),
                     resultSet.getTime("startTime"),
                     resultSet.getTime("endTime"),
-                    resultSet.getDouble("price"));
+                    resultSet.getDouble("price"),
+                    resultSet.getString("idAuthor"));
         } catch (SQLException e) {
             throw new RuntimeException("Result set reading failed.", e);
         }
@@ -37,8 +38,8 @@ public class SqlEventConverter implements SqlEntityConverter<EventEntity> {
     public String entityInsertSql(@Nonnull EventEntity entity) {
         checkNotNull(entity);
 
-        return String.format("INSERT INTO %s (idEvent, eventDate, name, description, startTime, endTime, price)" +
-                        "VALUES('%s','%s','%s','%s','%s','%s','%s')",
+        return String.format("INSERT INTO %s (idEvent, eventDate, name, description, startTime, endTime, price, idAuthor)" +
+                        "VALUES('%s','%s','%s','%s','%s','%s','%s', '%s')",
                 table,
                 entity.id(),
                 entity.eventDate(),
@@ -46,7 +47,8 @@ public class SqlEventConverter implements SqlEntityConverter<EventEntity> {
                 entity.description(),
                 entity.startTime(),
                 entity.endTime(),
-                entity.price());
+                entity.price(),
+                entity.idAuthor());
     }
 
     @Override
@@ -61,6 +63,7 @@ public class SqlEventConverter implements SqlEntityConverter<EventEntity> {
                         "startTime = '%s'" +
                         "endTime = '%s'" +
                         "price = '%d'" +
+                        "idAuthor = '%s'" +
                         "WHERE idEvent = '%s'",
                 table,
                 entity.eventDate(),
@@ -69,6 +72,7 @@ public class SqlEventConverter implements SqlEntityConverter<EventEntity> {
                 entity.startTime(),
                 entity.endTime(),
                 entity.price(),
+                entity.idAuthor(),
                 entity.id());
     }
 }
