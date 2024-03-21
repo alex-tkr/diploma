@@ -2,16 +2,16 @@ package ua.nure.calendar.services.user;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import ua.nure.calendar.persistent.authentication.AuthenticationDao;
+import ua.nure.calendar.persistent.authentication.AuthenticationEntity;
 import ua.nure.calendar.persistent.user.UserDao;
 import ua.nure.calendar.persistent.user.UserEntity;
-import ua.nure.calendar.services.user.InvalidCredentials;
-import ua.nure.calendar.services.user.UserAuthenticationResponse;
-import ua.nure.calendar.services.user.UserService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
+import static ua.nure.calendar.services.user.StringEncryptor.encrypt;
 
 public class UserServiceTest {
 
@@ -32,10 +32,13 @@ public class UserServiceTest {
         String password = "password123";
 
         when(mockUserDao.findByEmail(email))
-                .thenReturn(java.util.Optional.of(new UserEntity("1", "John", "Doe", email, StringEncryptor.encrypt(password), false, false)));
+                .thenReturn(java.util.Optional.of(new UserEntity("1", "John", "Doe", email, encrypt(password), false, false)));
+        ArgumentCaptor<AuthenticationEntity> authCaptor = ArgumentCaptor.forClass(AuthenticationEntity.class);
+
         UserAuthenticationResponse response = userService.auth(email, password);
 
-        assertEquals("1", response.authenticationToken());
+        verify(mockAuthDao).create(authCaptor.capture());
+        assertEquals(authCaptor.getValue().token(), response.authenticationToken());
 
         verify(mockAuthDao, times(1)).create(any());
     }
