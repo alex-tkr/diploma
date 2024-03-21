@@ -9,3 +9,4 @@
 
 rootProject.name = "Calendar"
 include("web", "services", "persistent")
+
