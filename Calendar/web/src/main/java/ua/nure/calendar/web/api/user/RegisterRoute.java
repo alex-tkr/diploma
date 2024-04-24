@@ -2,7 +2,6 @@ package ua.nure.calendar.web.api.user;
 
 import com.google.gson.Gson;
 import spark.Response;
-import ua.nure.calendar.services.user.InvalidCredentials;
 import ua.nure.calendar.services.user.UserAlreadyExist;
 import ua.nure.calendar.services.user.UserService;
 import ua.nure.calendar.web.api.JsonEntityValidationException;
@@ -21,7 +20,12 @@ public class RegisterRoute extends WrappedRoute {
     protected void wrappedRequestHandle(WrappedRequest request, Response response) throws JsonEntityValidationException {
         var body = request.jsonBody();
         try {
-            var registerResponse = userService.register(body.getAsString("firstName"), body.getAsString("lastName"),body.getAsString("email"), body.getAsString("password"), body.getAsBoolean("isAdmin"), body.getAsBoolean("isTeacher"));
+            var registerResponse = userService.register(body.getAsString("firstName"),
+                    body.getAsString("lastName"),
+                    body.getAsString("email"),
+                    body.getAsString("password"),
+                    body.getAsBoolean("isAdmin"),
+                    body.getAsBoolean("isTeacher"));
             response.body(gson.toJson(registerResponse));
         } catch (UserAlreadyExist e) {
             response.status(403);
